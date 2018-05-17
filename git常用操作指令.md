@@ -32,4 +32,22 @@ title: git常用操作指令
 2. 暂存区：在 .git 文件夹下存在一个stage(或者叫index)的暂存区，我们通过*git add* 命令就是将修改或新添加的文件放入暂存区，以便之后通过commit提交到版本库（Repository）中。
 
 ####撤销修改
+1. git  checkout -- file  在修改了文件，还没有add到暂存区，可以使用*checkout*命令进行撤销操作。
+2. git reset HEAD <file> 修改了文件，并且已经通过add命令提交到了暂存区，可以使用reset HEAD <file>命令将暂存区中的文件撤销（unstage）,重新放回工作区。注意，工作区的文件并不会撤销，只是将暂存区的修改撤销了而已。
+3. git reset 不仅可以进行版本回退（前提是没有推送到远程库），还可以撤销add进暂存区中修改。
 
+####删除文件
+通常我们删除文件时，直接选择delete掉或者使用命令行操作 rm 进行删除。但是这样只是在工作区中进行了删除，版本库中的文件并没有改变。如果只把工作区的文件删除后再使用git status 命令产看状态时：
+
+    $ git status
+        On branch master
+         Changes not staged for commit:
+        (use "git add/rm <file>..." to update what will be committed)
+        (use "git checkout -- <file>..." to discard changes in working directory)
+         deleted:    test.txt
+          no changes added to commit (use "git add" and/or "git commit -a")
+    
+
+1. git rm 从版本库中删除文件并通过 commit 提交删除。
+
+2.git checkout -- <file> 从版本库中恢复文件到工作区。
