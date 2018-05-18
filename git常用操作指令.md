@@ -60,7 +60,7 @@ title: git常用操作指令
 2.在github上创建账户，并将SSH key添加进“Account settings”，“SSH Keys”
 点“Add SSH Key”，填上任意Title，在Key文本框里粘贴id_rsa.pub文件的内容
 SSH key 的作用; 识别内容是否是你本人提交。只有通过公钥和私钥验证后你才能将和远程仓库建立联系。
-
+3.当本地仓库中已经存在有远程仓库时，使用git remote rm origin 删除远程仓库
 #### 本地已有仓库上传到远程仓库
 1.在github上创建新的仓库Repository，仓库名要和本地仓库名相同，获取到SSH方式的git连接，例如：git@github.com:s549520798/Notes.git
 2.在本地仓库目录下使用命令行：git remote add origin git@github.com:s549520798/Notes.git 将远程仓库和本地仓库合并。
@@ -78,7 +78,7 @@ Are you sure you want to continue connecting (yes/no)?
 上面的情况是先有本地库，再上传到远程仓库中；接下来的情况是，直接从远程仓库中克隆一个之前不存在的仓库到本地。
 1.在github上新建一个带readme文件的repository ，或者原先已存在的repository ，找到SSH克隆地址，如图
 
-![](~/15-27-13.jpg)
+![](/_image/git常用操作指令/15-27-13.jpg)
 2.使用$ git clone git@github.com:s549520798/Notes.git 命令进行克隆，最好新建与repository相同的目录，在改目录下使用 git clone 命令
 
 ### 分支管理
