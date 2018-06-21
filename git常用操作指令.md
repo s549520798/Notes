@@ -78,7 +78,7 @@ Are you sure you want to continue connecting (yes/no)?
 上面的情况是先有本地库，再上传到远程仓库中；接下来的情况是，直接从远程仓库中克隆一个之前不存在的仓库到本地。
 1.在github上新建一个带readme文件的repository ，或者原先已存在的repository ，找到SSH克隆地址，如图
 
-![](~/15-27-13.jpg)
+![](/_image/15-27-13.jpg)
 2.使用$ git clone git@github.com:s549520798/Notes.git 命令进行克隆，最好新建与repository相同的目录，在改目录下使用 git clone 命令
 
 ###分支管理
