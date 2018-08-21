@@ -88,3 +88,17 @@ There are two levels of access control:
 
 这里的subclass是指在另外包内的子类
 
+
+##Interface and Inheritance
+
+###Inheritance
+A class that is derived from another class is called a subclass (also a derived class, extended class, or child class). The class from which the subclass is derived is called a superclass (also a base class or a parent class).
+Excepting *Object*, which has no superclass, every class has one and only one direct superclass (single inheritance). In the absence of any other explicit superclass, every class is implicitly a subclass of *Object*.
+
+Instance methods are preferred over interface default methods
+
+Modifiers
+The access specifier for an overriding method can allow more, but not less, access than the overridden method. For example, a protected instance method in the superclass can be made public, but not private, in the subclass.
+
+###Numbers and Strings
+####Numbers
