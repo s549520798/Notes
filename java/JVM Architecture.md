@@ -26,7 +26,7 @@ The above Class Loaders will follow Delegation Hierarchy Algorithm while loading
   2. **Prepare** – For all static variables memory will be allocated and assigned with default values.
   3. **Resolve** – All symbolic memory references are replaced with the original references from Method Area.
 
-####1.3 Initialization
+#### 1.3 Initialization
 This is the final phase of Class Loading, here all static variables will be assigned with the original values, and the static block will be executed.
 
 ### 2. Runtime Data Area
@@ -39,6 +39,7 @@ The Runtime Data Area is divided into 5 major components:
         3. **Frame data** – All symbols corresponding to the method is stored here. In the case of any exception, the catch block information will be maintained in the frame data.
     4. **PC Registers**– Each thread will have separate PC Registers, to hold the address of current executing instruction once the instruction is executed the PC register will be updated with the next instruction.
     5. **Native Method stacks** – Native Method Stack holds native method information. For every thread, a separate native method stack will be created.
+
 ### 3. Execution Engine
 The bytecode which is assigned to the **Runtime Data Area** will be executed by the Execution Engine. The Execution Engine reads the bytecode and executes it piece by piece.
     1. **Interpreter** – The interpreter interprets the bytecode faster, but executes slowly. The disadvantage of the interpreter is that when one method is called multiple times, every time a new interpretation is required.
