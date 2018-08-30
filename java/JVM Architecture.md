@@ -32,25 +32,27 @@ This is the final phase of Class Loading, here all static variables will be assi
 ### 2. Runtime Data Area
 
 The Runtime Data Area is divided into 5 major components:
-    1. **Method Area** – All the class level data will be stored here, including static variables. There is only one method area per JVM, and it is a shared resource.
-    2. **Heap Area** – All the Objects and their corresponding instance variables and arrays will be stored here. There is also one Heap Area per JVM. Since the Method and Heap areas share memory for multiple threads, the data stored is not thread safe.
-    3. **Stack Area** – For every thread, a separate runtime stack will be created. For every method call, one entry will be made in the stack memory which is called as Stack Frame. All local variables will be created in the stack memory. The stack area is thread safe since it is not a shared resource. The Stack Frame is divided into three subentities:
-        1. **Local Variable Array** – Related to the method how many local variables are involved and the corresponding values will be stored here.
-        2. **Operand stack** – If any intermediate operation is required to perform, operand stack acts as runtime workspace to perform the operation.
-        3. **Frame data** – All symbols corresponding to the method is stored here. In the case of any exception, the catch block information will be maintained in the frame data.
-    4. **PC Registers**– Each thread will have separate PC Registers, to hold the address of current executing instruction once the instruction is executed the PC register will be updated with the next instruction.
-    5. **Native Method stacks** – Native Method Stack holds native method information. For every thread, a separate native method stack will be created.
+
+   1. **Method Area** – All the class level data will be stored here, including static variables. There is only one method area per JVM, and it is a shared resource.
+   2. **Heap Area** – All the Objects and their corresponding instance variables and arrays will be stored here. There is also one Heap Area per JVM. Since the Method and Heap areas share memory for multiple threads, the data stored is not thread safe.
+   3. **Stack Area** – For every thread, a separate runtime stack will be created. For every method call, one entry will be made in the stack memory which is called as Stack Frame. All local variables will be created in the stack memory. The stack area is thread safe since it is not a shared resource. The Stack Frame is divided into three subentities:
+       1. **Local Variable Array** – Related to the method how many local variables are involved and the corresponding values will be stored here.
+       2. **Operand stack** – If any intermediate operation is required to perform, operand stack acts as runtime workspace to perform the operation.
+       3. **Frame data** – All symbols corresponding to the method is stored here. In the case of any exception, the catch block information will be maintained in the frame data.
+   4. **PC Registers**– Each thread will have separate PC Registers, to hold the address of current executing instruction once the instruction is executed the PC register will be updated with the next instruction.
+   5. **Native Method stacks** – Native Method Stack holds native method information. For every thread, a separate native method stack will be created.
 
 ### 3. Execution Engine
 
 The bytecode which is assigned to the **Runtime Data Area** will be executed by the Execution Engine. The Execution Engine reads the bytecode and executes it piece by piece.
-    1. **Interpreter** – The interpreter interprets the bytecode faster, but executes slowly. The disadvantage of the interpreter is that when one method is called multiple times, every time a new interpretation is required.
-    2. **JIT Compiler** – The JIT Compiler neutralizes the disadvantage of the interpreter. The Execution Engine will be using the help of the interpreter in converting byte code, but when it finds repeated code it uses the JIT compiler, which compiles the entire bytecode and changes it to native code. This native code will be used directly for repeated method calls, which improve the performance of the system.
-        1. **Intermediate Code generator** – Produces intermediate code
-        2. **Code Optimizer** – Responsible for optimizing the intermediate code generated above
-        3. **Target Code Generator** – Responsible for Generating Machine Code or Native Code
-        4. **Profiler** – A special component, responsible for finding hotspots, i.e. whether the method is called multiple times or not.
-    3. **Garbage Collector**: Collects and removes unreferenced objects. Garbage Collection can be triggered by calling "System.gc()", but the execution is not guaranteed. Garbage collection of the JVM collects the objects that are created.
+
+   1. **Interpreter** – The interpreter interprets the bytecode faster, but executes slowly. The disadvantage of the interpreter is that when one method is called multiple times, every time a new interpretation is required.
+   2. **JIT Compiler** – The JIT Compiler neutralizes the disadvantage of the interpreter. The Execution Engine will be using the help of the interpreter in converting byte code, but when it finds repeated code it uses the JIT compiler, which compiles the entire bytecode and changes it to native code. This native code will be used directly for repeated method calls, which improve the performance of the system.
+       1. **Intermediate Code generator** – Produces intermediate code
+       2. **Code Optimizer** – Responsible for optimizing the intermediate code generated above
+       3. **Target Code Generator** – Responsible for Generating Machine Code or Native Code
+       4. **Profiler** – A special component, responsible for finding hotspots, i.e. whether the method is called multiple times or not.
+   3. **Garbage Collector**: Collects and removes unreferenced objects. Garbage Collection can be triggered by calling "System.gc()", but the execution is not guaranteed. Garbage collection of the JVM collects the objects that are created.
 
 **Java Native Interface (JNI)**: JNI will be interacting with the Native Method Libraries and provides the Native Libraries required for the Execution Engine.
 **Native Method Libraries**:It is a collection of the Native Libraries which is required for the Execution Engine.
