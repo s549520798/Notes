@@ -30,6 +30,7 @@ The above Class Loaders will follow Delegation Hierarchy Algorithm while loading
 This is the final phase of Class Loading, here all static variables will be assigned with the original values, and the static block will be executed.
 
 ### 2. Runtime Data Area
+
 The Runtime Data Area is divided into 5 major components:
     1. **Method Area** – All the class level data will be stored here, including static variables. There is only one method area per JVM, and it is a shared resource.
     2. **Heap Area** – All the Objects and their corresponding instance variables and arrays will be stored here. There is also one Heap Area per JVM. Since the Method and Heap areas share memory for multiple threads, the data stored is not thread safe.
@@ -41,6 +42,7 @@ The Runtime Data Area is divided into 5 major components:
     5. **Native Method stacks** – Native Method Stack holds native method information. For every thread, a separate native method stack will be created.
 
 ### 3. Execution Engine
+
 The bytecode which is assigned to the **Runtime Data Area** will be executed by the Execution Engine. The Execution Engine reads the bytecode and executes it piece by piece.
     1. **Interpreter** – The interpreter interprets the bytecode faster, but executes slowly. The disadvantage of the interpreter is that when one method is called multiple times, every time a new interpretation is required.
     2. **JIT Compiler** – The JIT Compiler neutralizes the disadvantage of the interpreter. The Execution Engine will be using the help of the interpreter in converting byte code, but when it finds repeated code it uses the JIT compiler, which compiles the entire bytecode and changes it to native code. This native code will be used directly for repeated method calls, which improve the performance of the system.
